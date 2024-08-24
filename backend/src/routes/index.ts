@@ -10,6 +10,7 @@ import upload from "../config/multer";
 import { ListByCategoryController } from "../controllers/products/ListByCategoryController";
 import { CreateOrderController } from "../controllers/orders/CreateOrderController";
 import { DeleteOrderController } from "../controllers/orders/DeleteOrderController";
+import { AddItemController } from "../controllers/items/AddItemController";
 
 const Route = Router()
 
@@ -31,5 +32,9 @@ Route.get('/products/:category_id', auth, new ListByCategoryController().handle)
 // ========
 Route.post('/orders', auth, new CreateOrderController().handle)
 Route.delete('/orders/:order_id', auth, new DeleteOrderController().handle)
+
+// Items
+// ======
+Route.post('/order/add', new AddItemController().handle)
 
 export default Route

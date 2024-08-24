@@ -14,6 +14,7 @@ import { AddItemController } from "../controllers/items/AddItemController";
 import { RemoveItemController } from "../controllers/items/RemoveItemController";
 import { SendOrderController } from "../controllers/orders/SendOrderController";
 import { ListOrderController } from "../controllers/orders/ListOrderController";
+import { DetailOrderController } from "../controllers/orders/DetailOrderController";
 
 const Route = Router()
 
@@ -34,6 +35,7 @@ Route.get('/products/:category_id', auth, new ListByCategoryController().handle)
 // Pedidos
 // ========
 Route.get('/orders', auth, new ListOrderController().handle)
+Route.get('/order/:detail', auth, new DetailOrderController().handle)
 Route.post('/orders', auth, new CreateOrderController().handle)
 Route.put('/orders/:order_id', auth, new SendOrderController().handle)
 Route.delete('/orders/:order_id', auth, new DeleteOrderController().handle)

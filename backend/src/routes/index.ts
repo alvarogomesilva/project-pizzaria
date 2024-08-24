@@ -12,6 +12,7 @@ import { CreateOrderController } from "../controllers/orders/CreateOrderControll
 import { DeleteOrderController } from "../controllers/orders/DeleteOrderController";
 import { AddItemController } from "../controllers/items/AddItemController";
 import { RemoveItemController } from "../controllers/items/RemoveItemController";
+import { SendOrderController } from "../controllers/orders/SendOrderController";
 
 const Route = Router()
 
@@ -32,11 +33,12 @@ Route.get('/products/:category_id', auth, new ListByCategoryController().handle)
 // Pedidos
 // ========
 Route.post('/orders', auth, new CreateOrderController().handle)
+Route.put('/orders/:order_id', auth, new SendOrderController().handle)
 Route.delete('/orders/:order_id', auth, new DeleteOrderController().handle)
 
 // Items
 // ======
-Route.post('/order/add', new AddItemController().handle)
-Route.delete('/order/:item_id', new RemoveItemController().handle)
+Route.post('/order/add', auth, new AddItemController().handle)
+Route.delete('/order/:item_id', auth, new RemoveItemController().handle)
 
 export default Route

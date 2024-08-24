@@ -15,6 +15,7 @@ import { RemoveItemController } from "../controllers/items/RemoveItemController"
 import { SendOrderController } from "../controllers/orders/SendOrderController";
 import { ListOrderController } from "../controllers/orders/ListOrderController";
 import { DetailOrderController } from "../controllers/orders/DetailOrderController";
+import { FinishOrderController } from "../controllers/orders/FinishOrderController";
 
 const Route = Router()
 
@@ -37,6 +38,7 @@ Route.get('/products/:category_id', auth, new ListByCategoryController().handle)
 Route.get('/orders', auth, new ListOrderController().handle)
 Route.get('/order/:detail', auth, new DetailOrderController().handle)
 Route.post('/orders', auth, new CreateOrderController().handle)
+Route.post('/order/finish', auth, new FinishOrderController().handle)
 Route.put('/orders/:order_id', auth, new SendOrderController().handle)
 Route.delete('/orders/:order_id', auth, new DeleteOrderController().handle)
 

@@ -11,6 +11,7 @@ import { ListByCategoryController } from "../controllers/products/ListByCategory
 import { CreateOrderController } from "../controllers/orders/CreateOrderController";
 import { DeleteOrderController } from "../controllers/orders/DeleteOrderController";
 import { AddItemController } from "../controllers/items/AddItemController";
+import { RemoveItemController } from "../controllers/items/RemoveItemController";
 
 const Route = Router()
 
@@ -36,5 +37,6 @@ Route.delete('/orders/:order_id', auth, new DeleteOrderController().handle)
 // Items
 // ======
 Route.post('/order/add', new AddItemController().handle)
+Route.delete('/order/:item_id', new RemoveItemController().handle)
 
 export default Route

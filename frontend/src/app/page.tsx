@@ -10,7 +10,7 @@ export default function Home() {
         <Image 
           src={Logo}
           alt="Logo da pizzaria"
-          width={300}
+          height={250}
         />
 
         <div className={styles.login}>

@@ -9,4 +9,4 @@ app.use('/files', static_(resolve(__dirname, '..', 'uploads')))
 
 app.use(Routes)
 
-app.listen(3000, () => console.log('Server is listening!'))
+app.listen(5000, () => console.log('Server is listening!'))

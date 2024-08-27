@@ -2,8 +2,30 @@ import styles from '../page.module.sass'
 import Image from "next/image";
 import Link from "next/link";
 import Logo from '/public/logo.png'
+import { api } from '@/services/api';
+import { redirect } from 'next/navigation';
 
 export default function SignUp() {
+
+    async function handleRegister(formData: FormData) {
+      "use server"
+
+      const name = formData.get("name")
+      const email = formData.get("email")
+      const password = formData.get("password")
+
+      if (!name || !email || !password) return
+
+      try {
+        await api.post("/users", {name, email, password})
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+      redirect("/")
+    }
+
     return (
         <>
          <div className={styles.container}>
@@ -14,7 +36,7 @@ export default function SignUp() {
         />
         <div className={styles.login}>
         <h2>Crie sua conta</h2>
-          <form>
+          <form action={handleRegister}>
             <input type="text" 
               name="name"
               placeholder="Digite seu Nome"
